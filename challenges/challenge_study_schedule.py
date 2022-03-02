@@ -1,8 +1,12 @@
+def check_entry(entry):
+    if entry is None:
+        return None
+
+
 def study_schedule(permanence_period, target_time):
     students_present = 0
 
-    if target_time is None:
-        return None
+    check_entry(target_time)
 
     for student in permanence_period:
         try:
