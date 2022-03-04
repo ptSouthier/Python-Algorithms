@@ -1,4 +1,4 @@
 def is_palindrome_iterative(word):
-    splitted_word = word.split()
+    reversed_word = word[::-1]
 
-    return splitted_word.reverse() == splitted_word
+    return reversed_word == word
