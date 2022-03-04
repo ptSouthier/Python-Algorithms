@@ -1,7 +1,6 @@
 def find_duplicate(nums):
     if isinstance(nums, list) is False:
         return False
-
     nums.sort()
     setOfNums = set()
     for num in nums:
