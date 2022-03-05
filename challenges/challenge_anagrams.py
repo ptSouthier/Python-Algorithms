@@ -16,7 +16,7 @@ def bubble_sort(list):
 
 
 def is_anagram(first_string, second_string):
-    string_a = bubble_sort(first_string.split())
-    string_b = bubble_sort(second_string.split())
+    string_a = bubble_sort(list(first_string))
+    string_b = bubble_sort(list(second_string))
 
     return string_a == string_b
