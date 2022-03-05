@@ -1,3 +1,11 @@
+def merge_sort(list):
+    if len(list) <= 1:
+        return list
+    mid = len(list) // 2
+    left, right = merge_sort(list[:mid]), merge_sort(list[mid:])
+    return merge(left, right, list.copy())
+
+
 def merge(left, right, merged):
     left_cursor, right_cursor = 0, 0
 
@@ -16,14 +24,6 @@ def merge(left, right, merged):
         merged[left_cursor + right_cursor] = right[right_cursor]
 
     return merged
-
-
-def merge_sort(list):
-    if len(list) <= 1:
-        return list
-    mid = len(list) // 2
-    left, right = merge_sort(list[:mid]), merge_sort(list[mid:])
-    return merge(left, right, list.copy())
 
 
 def is_anagram(first_string, second_string):
