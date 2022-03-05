@@ -1,22 +1,35 @@
-def bubble_sort(list):
-    has_swapped = True
-    num_of_iterations = 0
+def merge(left, right, merged):
+    left_cursor, right_cursor = 0, 0
 
-    while has_swapped:
-        has_swapped = False
+    while left_cursor < len(left) and right_cursor < len(right):
+        if left[left_cursor] <= right[right_cursor]:
+            merged[left_cursor + right_cursor] = left[left_cursor]
+            left_cursor += 1
+        else:
+            merged[left_cursor + right_cursor] = right[right_cursor]
+            right_cursor += 1
 
-        for index in range(len(list) - num_of_iterations - 1):
-            if list[index] > list[index + 1]:
-                list[index], list[index + 1] = list[index + 1], list[index]
-                has_swapped = True
+    for left_cursor in range(left_cursor, len(left)):
+        merged[left_cursor + right_cursor] = left[left_cursor]
 
-        num_of_iterations += 1
+    for right_cursor in range(right_cursor, len(right)):
+        merged[left_cursor + right_cursor] = right[right_cursor]
 
-    return list
+    return merged
+
+
+def merge_sort(list):
+    if len(list) <= 1:
+        return list
+
+    mid = len(list) // 2
+    left, right = merge_sort(list[:mid]), merge_sort(list[mid:])
+
+    return merge(left, right, list.copy())
 
 
 def is_anagram(first_string, second_string):
-    string_a = bubble_sort(list(first_string))
-    string_b = bubble_sort(list(second_string))
+    string_a = merge_sort(list(first_string))
+    string_b = merge_sort(list(second_string))
 
     return string_a == string_b
