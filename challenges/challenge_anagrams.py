@@ -21,15 +21,12 @@ def merge(left, right, merged):
 def merge_sort(list):
     if len(list) <= 1:
         return list
-
     mid = len(list) // 2
     left, right = merge_sort(list[:mid]), merge_sort(list[mid:])
-
     return merge(left, right, list.copy())
 
 
 def is_anagram(first_string, second_string):
     string_a = merge_sort(list(first_string))
     string_b = merge_sort(list(second_string))
-
     return string_a == string_b
